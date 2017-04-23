@@ -25,7 +25,6 @@ module.exports = class RequestCommand extends Command {
 
 	async run(msg, { requestContent }) {
 		const requestsChannel = this.client.channels.get(requestsChannelID);
-
 		if (!requestsChannel || requestsChannel.type !== 'text') {
 			return msg.reply(oneLine`
 				the owner of this bot has not set a valid channel for requests,
@@ -33,8 +32,10 @@ module.exports = class RequestCommand extends Command {
 			`);
 		}
 
-		const nextID = await Request.count() + 1;
-
+		const request = await Request.create({
+			requester: msg.author.id,
+			request: requestContent
+		});
 		const requestMessage = await requestsChannel.send({
 			embed: {
 				color: 0x30A9ED,
@@ -44,15 +45,10 @@ module.exports = class RequestCommand extends Command {
 				},
 				description: requestContent,
 				timestamp: new Date(),
-				footer: { text: `Request #${nextID}` }
+				footer: { text: `Request #${request.id}` }
 			}
 		});
-
-		await Request.create({
-			requester: msg.author.id,
-			request: requestContent,
-			requestMessage: requestMessage.id
-		});
+		await request.update({ requestMessage: requestMessage.id });
 
 		return msg.reply('your request has been acknowledged. Please wait until it has been reviewed.');
 	}
