@@ -3,15 +3,19 @@ const { oneLine } = require('common-tags');
 const path = require('path');
 const winston = require('winston');
 
-const { owner } = require('./config');
+const config = require('./config');
+const Database = require('./structures/PostgreSQL');
 const HimawariClient = require('./structures/HimawariClient');
+const SequelizeProvider = require('./providers/Sequelize');
 
 const client = new HimawariClient({
-	owner,
-	commandPrefix: '',
+	owner: config.owner,
+	commandPrefix: config.prefix,
 	unknownCommandResponse: false,
 	disableEveryone: true
 });
+
+client.setProvider(new SequelizeProvider(Database.db));
 
 client.on('error', winston.error)
 	.on('warn', winston.warn)
@@ -64,9 +68,12 @@ client.on('error', winston.error)
 
 client.registry
 	.registerDefaults()
+	.registerGroups([
+		['request', 'Requests']
+	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.login();
+client.login(config.token);
 
 process.on('unhandledRejection', err => {
 	winston.error(`Uncaught Promise Error: \n${err.stack}`);
