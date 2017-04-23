@@ -1,9 +1,0 @@
-{
-	"token": "MjYzOTM4MTU3MjAyODk4OTQ0.C2ZfDg.9XHYLtZfGF2XsG5roLwlvxxaNv0",
-	"prefix": "~",
-	"owner": [
-		"86890631690977280"
-	],
-	"db": "postgres://himawari:plshurtme@localhost:5432/himawari",
-	"requestsChannel": "305686763085496321"
-}
