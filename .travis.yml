@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "7"
+dist: trusty
+cache:
+  - yarn
+  directories:
+    - node_modules
+addons:
+  apt:
+    sources:
+      - git-core
+    packages:
+      - git
