@@ -8,11 +8,11 @@ promisifyAll(redisClient.Multi.prototype);
 const redis = redisClient.createClient({ db: 4 });
 
 class Redis {
-	get db() {
+	static get db() {
 		return redis;
 	}
 
-	start() {
+	static start() {
 		redis.on('error', err => winston.error(`[REDIS]: Encountered error: ${err}`))
 			.on('reconnecting', () => winston.warn('[REDIS]: Reconnecting...'));
 	}

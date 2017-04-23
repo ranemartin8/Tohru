@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 
 const Request = require('../../models/Request');
-const { requestsChannel: requestsChannelID } = require('../../config');
+const { requestsChannel } = require('../../config');
 
 module.exports = class RejectRequestCommand extends Command {
 	constructor(client) {
@@ -9,18 +9,18 @@ module.exports = class RejectRequestCommand extends Command {
 			name: 'reject',
 			group: 'request',
 			memberName: 'reject',
-			description: 'Request a new feature for any of our projects!',
+			description: 'Reject a requested feature.',
 			guildOnly: true,
 
 			args: [
 				{
 					key: 'requestID',
-					prompt: 'What feature would you like to request?',
+					prompt: 'which feature request would you like to reject?\n',
 					type: 'integer'
 				},
 				{
 					key: 'reason',
-					prompt: 'Why did the request get rejected?',
+					prompt: 'why did the request get rejected?\n',
 					type: 'string'
 				}
 			]
@@ -32,7 +32,7 @@ module.exports = class RejectRequestCommand extends Command {
 	}
 
 	async run(msg, { requestID, reason }) {
-		if (msg.channel.id !== requestsChannelID) {
+		if (msg.channel.id !== requestsChannel) {
 			return msg.reply('this command can only be used in the requests channel.');
 		}
 
@@ -56,11 +56,13 @@ module.exports = class RejectRequestCommand extends Command {
 			}
 		});
 
-		return msg.reply(`successfully rejected request #${request.id}!`).then(async () => {
-			const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
-			const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
-			await new Promise(res => setTimeout(res, 1500));
-			Promise.all([...messages.deleteAll(), requestMessage.delete()]);
-		});
+		return msg.reply(`successfully rejected request #${request.id}!`)
+			.then(async () => {
+				const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
+				const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
+				await new Promise(res => setTimeout(res, 1500));
+
+				Promise.all([...messages.deleteAll(), requestMessage.delete()]);
+			});
 	}
 };

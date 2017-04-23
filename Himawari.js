@@ -45,9 +45,9 @@ client.on('error', winston.error)
 			blocked; User ${msg.author.tag} (${msg.author.id}): ${reason}
 		`);
 	})
-	.on('commandPrefixChange', (guild, newPrefix) => {
+	.on('commandPrefixChange', (guild, prefix) => {
 		winston.info(oneLine`
-			[DISCORD]: Prefix changed to ${newPrefix || 'the default'}
+			[DISCORD]: Prefix changed to ${prefix || 'the default'}
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
 	})

@@ -16,7 +16,7 @@ module.exports = class RequestCommand extends Command {
 			args: [
 				{
 					key: 'requestContent',
-					prompt: 'What feature would you like to request?',
+					prompt: 'what feature would you like to request?\n',
 					type: 'string'
 				}
 			]
@@ -40,7 +40,7 @@ module.exports = class RequestCommand extends Command {
 			embed: {
 				color: 0x30A9ED,
 				author: {
-					name: msg.author.tag,
+					name: `${msg.author.tag} (${msg.author.id})`,
 					icon_url: msg.author.displayAvatarURL // eslint-disable-line camelcase
 				},
 				description: requestContent,

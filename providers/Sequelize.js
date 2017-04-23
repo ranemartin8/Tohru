@@ -57,7 +57,7 @@ class SequelizeProvider extends SettingProvider {
 				unique: true,
 				primaryKey: true
 			},
-			settings: { type: Sequelize.STRING }
+			settings: { type: Sequelize.TEXT }
 		});
 
 		/**

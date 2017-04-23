@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 
 const Request = require('../../models/Request');
-const { requestsChannel: requestsChannelID } = require('../../config');
+const { requestsChannel } = require('../../config');
 
 module.exports = class ApproveRequestCommand extends Command {
 	constructor(client) {
@@ -9,13 +9,13 @@ module.exports = class ApproveRequestCommand extends Command {
 			name: 'approve',
 			group: 'request',
 			memberName: 'approve',
-			description: 'Request a new feature for any of our projects!',
+			description: 'Approve a requested feature.',
 			guildOnly: true,
 
 			args: [
 				{
 					key: 'requestID',
-					prompt: 'What feature would you like to request?',
+					prompt: 'which feature request do you wanna approve?\n',
 					type: 'integer'
 				}
 			]
@@ -27,7 +27,7 @@ module.exports = class ApproveRequestCommand extends Command {
 	}
 
 	async run(msg, { requestID }) {
-		if (msg.channel.id !== requestsChannelID) {
+		if (msg.channel.id !== requestsChannel) {
 			return msg.reply('this command can only be used in the requests channel.');
 		}
 
@@ -50,10 +50,12 @@ module.exports = class ApproveRequestCommand extends Command {
 			}
 		});
 
-		return msg.reply(`successfully approved request #${request.id}!`).then(async () => {
-			const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
-			const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
-			Promise.all([...messages.deleteAll(), requestMessage.delete()]);
-		});
+		return msg.reply(`successfully approved request #${request.id}!`)
+			.then(async () => {
+				const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
+				const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
+
+				Promise.all([...messages.deleteAll(), requestMessage.delete()]);
+			});
 	}
 };
