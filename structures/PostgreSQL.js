@@ -19,7 +19,7 @@ class Database {
 				.catch(error => winston.error(`[POSTGRES]: Error synchronizing the database: ${error}`))
 			)
 			.then(() => winston.info('[POSTGRES]: Ready to rock!'))
-			.catch(err => winston.error(`[POSTGRES]: Unable to connect to the database: ${err}`));
+			.catch(error => winston.error(`[POSTGRES]: Unable to connect to the database: ${error}`));
 	}
 }
 
