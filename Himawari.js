@@ -1,5 +1,5 @@
-const { FriendlyError, SQLiteProvider } = require('discord.js-commando');
-const { oneLine, stripIndents } = require('common-tags');
+const { FriendlyError } = require('discord.js-commando');
+const { oneLine } = require('common-tags');
 const path = require('path');
 const winston = require('winston');
 
