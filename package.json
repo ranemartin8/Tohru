@@ -1,0 +1,50 @@
+{
+  "name": "himawari",
+  "version": "0.1.0",
+  "description": "The official WeebDev server bot.",
+  "main": "Himawari.js",
+  "author": {
+    "name": "iCrawl",
+    "email": "icrawltogo@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "vzwGrey"
+    }
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeebDev/Himawari.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WeebDev/Himawari/issues"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "weebdev"
+  ],
+  "homepage": "https://github.com/WeebDev/Himawari#readme",
+  "dependencies": {
+    "bufferutil": "^3.0.0",
+    "discord.js": "hydrabolt/discord.js#8436cbe8b164a58a1655a38198a2de0e14ed9f5e",
+    "discord.js-commando": "gawdl3y/discord.js-commando",
+    "erlpack": "hammerandchisel/erlpack",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-aqua": "^1.2.0"
+  },
+  "eslintConfig": {
+    "extends": "aqua"
+  },
+  "engines": {
+    "node": ">=7.6.0"
+  }
+}
