@@ -2,10 +2,7 @@ language: node_js
 node_js:
   - "7"
 dist: trusty
-cache:
-  - yarn
-  directories:
-    - node_modules
+cache: yarn
 addons:
   apt:
     sources:
