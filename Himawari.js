@@ -3,19 +3,18 @@ const { oneLine } = require('common-tags');
 const path = require('path');
 const winston = require('winston');
 
-const config = require('./config');
-const Database = require('./structures/PostgreSQL');
+const { prefix, owner, token } = require('./config');
 const HimawariClient = require('./structures/HimawariClient');
 const SequelizeProvider = require('./providers/Sequelize');
 
 const client = new HimawariClient({
-	owner: config.owner,
-	commandPrefix: config.prefix,
+	owner: owner,
+	commandPrefix: prefix,
 	unknownCommandResponse: false,
 	disableEveryone: true
 });
 
-client.setProvider(new SequelizeProvider(Database.db));
+client.setProvider(new SequelizeProvider(client.db));
 
 client.on('error', winston.error)
 	.on('warn', winston.warn)
@@ -46,9 +45,9 @@ client.on('error', winston.error)
 			blocked; User ${msg.author.tag} (${msg.author.id}): ${reason}
 		`);
 	})
-	.on('commandPrefixChange', (guild, prefix) => {
+	.on('commandPrefixChange', (guild, newPrefix) => {
 		winston.info(oneLine`
-			[DISCORD]: Prefix changed to ${prefix || 'the default'}
+			[DISCORD]: Prefix changed to ${newPrefix || 'the default'}
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
 	})
@@ -74,7 +73,7 @@ client.registry
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.login(config.token);
+client.login(token);
 
 process.on('unhandledRejection', err => {
 	winston.error(`Uncaught Promise Error: \n${err.stack}`);
