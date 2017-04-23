@@ -10,7 +10,7 @@ class Database {
 		return database;
 	}
 
-	start() {
+	static start() {
 		database.authenticate()
 			.then(() => winston.info('[POSTGRES]: Connection to database has been established successfully.'))
 			.then(() => winston.info('[POSTGRES]: Synchronizing database...'))

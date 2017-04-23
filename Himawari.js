@@ -3,18 +3,18 @@ const { oneLine } = require('common-tags');
 const path = require('path');
 const winston = require('winston');
 
-const { prefix, owner, token } = require('./config');
+const { commandPrefix, owner, token } = require('./config');
 const HimawariClient = require('./structures/HimawariClient');
 const SequelizeProvider = require('./providers/Sequelize');
 
 const client = new HimawariClient({
 	owner: owner,
-	commandPrefix: prefix,
+	commandPrefix,
 	unknownCommandResponse: false,
 	disableEveryone: true
 });
 
-client.setProvider(new SequelizeProvider(client.db));
+client.setProvider(new SequelizeProvider(client.database));
 
 client.on('error', winston.error)
 	.on('warn', winston.warn)
