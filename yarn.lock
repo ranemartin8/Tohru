@@ -1050,6 +1050,10 @@ tryit@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
 
+tsubaki@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tsubaki/-/tsubaki-1.1.0.tgz#fc186f537bf163d72f9d139f6e467b5036cfdb12"
+
 tunnel-agent@^0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"

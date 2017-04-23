@@ -35,6 +35,7 @@
     "discord.js": "hydrabolt/discord.js#8436cbe8b164a58a1655a38198a2de0e14ed9f5e",
     "discord.js-commando": "gawdl3y/discord.js-commando",
     "erlpack": "hammerandchisel/erlpack",
+    "tsubaki": "^1.1.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {
