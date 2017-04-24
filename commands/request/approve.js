@@ -54,8 +54,8 @@ module.exports = class ApproveRequestCommand extends Command {
 			.then(async () => {
 				const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
 				const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
-
-				Promise.all([...messages.deleteAll(), requestMessage.delete()]);
+				messages.deleteAll();
+				requestMessage.delete();
 			});
 	}
 };

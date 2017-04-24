@@ -60,9 +60,8 @@ module.exports = class RejectRequestCommand extends Command {
 			.then(async () => {
 				const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
 				const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
-				await new Promise(res => setTimeout(res, 1500));
-
-				Promise.all([...messages.deleteAll(), requestMessage.delete()]);
+				messages.deleteAll();
+				requestMessage.delete();
 			});
 	}
 };
