@@ -41,7 +41,7 @@ module.exports = class ApproveRequestCommand extends Command {
 
 		await this.client.users.get(request.requester).send({
 			embed: {
-				color: 0xED2136,
+				color: 0x44ED6F,
 				author: {
 					name: 'Request approved',
 					icon_url: msg.author.displayAvatarURL // eslint-disable-line camelcase
