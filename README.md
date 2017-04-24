@@ -4,6 +4,8 @@
 <div align="center">
 	<p>
 		<a href="https://david-dm.org/WeebDev/Himawari"><img src="https://david-dm.org/WeebDev/Himawari/status.svg?maxAge=3600" alt="Dependencies" /></a>
+		<a href="https://www.travis-ci.org/WeebDev/Himawari"><img src="https://www.travis-ci.org/WeebDev/Himawari.svg?branch=master" alt="Build Status" /></a>
+		<a href="https://discord.gg/tADcnuY"><img src="https://discordapp.com/api/guilds/304034982475595776/embed.png" alt="Discord server" /></a>		
 	</p>
 </div>
 
