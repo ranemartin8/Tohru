@@ -15,11 +15,10 @@ class Database {
 			.then(() => winston.info('[POSTGRES]: Connection to database has been established successfully.'))
 			.then(() => winston.info('[POSTGRES]: Synchronizing database...'))
 			.then(() => database.sync()
-				.then(() => winston.info('[POSTGRES]: Synchronizing database done!'))
-				.catch(error => winston.error(`[POSTGRES]: Error synchronizing the database: ${error}`))
+				.then(() => winston.info('[POSTGRES]: Done Synchronizing database!'))
+				.catch(error => winston.error(`[POSTGRES]: Error synchronizing the database: \n${error}`))
 			)
-			.then(() => winston.info('[POSTGRES]: Ready to rock!'))
-			.catch(error => winston.error(`[POSTGRES]: Unable to connect to the database: ${error}`));
+			.catch(error => winston.error(`[POSTGRES]: Unable to connect to the database: \n${error}`));
 	}
 }
 
