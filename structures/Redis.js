@@ -13,7 +13,7 @@ class Redis {
 	}
 
 	static start() {
-		redis.on('error', err => winston.error(`[REDIS]: Encountered error: ${err}`))
+		redis.on('error', error => winston.error(`[REDIS]: Encountered error: \n${error}`))
 			.on('reconnecting', () => winston.warn('[REDIS]: Reconnecting...'));
 	}
 }

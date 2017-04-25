@@ -38,7 +38,7 @@ module.exports = class RejectRequestCommand extends Command {
 
 		const request = await Request.findById(requestID);
 		if (!request) return msg.reply('you provided an invalid request id.');
-		await request.update({
+		await request.save({
 			processed: true,
 			processedBy: msg.author.id,
 			approved: false,
