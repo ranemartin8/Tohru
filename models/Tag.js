@@ -13,14 +13,6 @@ const Tag = Database.db.define('tags', {
 		type: Sequelize.BOOLEAN,
 		defaultValue: false
 	},
-	example: {
-		type: Sequelize.BOOLEAN,
-		defaultValue: false
-	},
-	exampleID: {
-		type: Sequelize.STRING,
-		defaultValue: ''
-	},
 	uses: {
 		type: Sequelize.INTEGER,
 		defaultValue: 0
