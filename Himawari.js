@@ -35,6 +35,13 @@ client.on('error', winston.error)
 			${Object.values(args)[0] !== '' || !Object.values(args).length ? `>>> ${Object.values(args)}` : ''}
 		`)
 	)
+	.on('unknownCommand', msg => {
+		if (msg.channel.type === 'dm') return;
+		if (msg.author.bot) return;
+
+		const args = { name: msg.content.split(client.commandPrefix)[1] };
+		client.registry.resolveCommand('tags:tag').run(msg, args);
+	})
 	.on('commandError', (cmd, err) => {
 		if (err instanceof FriendlyError) return;
 		winston.error(`[DISCORD]: Error in command ${cmd.groupID}:${cmd.memberName}`, err);
@@ -70,7 +77,8 @@ client.registry
 	.registerDefaults()
 	.registerGroups([
 		['request', 'Requests'],
-		['issue', 'Issues']
+		['issue', 'Issues'],
+		['tags', 'Tags']
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
