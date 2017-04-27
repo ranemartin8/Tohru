@@ -56,7 +56,7 @@ module.exports = class RejectRequestCommand extends Command {
 				fields: [
 					{
 						name: 'Your request:',
-						value: request.length <= 1024 ? request.issue : `${request.issue.substr(0, 1021)}...`
+						value: request.request.length <= 1024 ? request.request : `${request.request.substr(0, 1021)}...`
 					}
 				]
 			}
