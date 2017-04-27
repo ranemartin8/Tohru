@@ -32,6 +32,20 @@ module.exports = class RequestCommand extends Command {
 			`);
 		}
 
+		const openRequests = await Request.count({
+			where: {
+				requester: msg.author.id,
+				processed: false
+			}
+		});
+
+		if (openRequests > 5) {
+			return msg.reply(oneLine`
+				you already have 5 open requests.
+				Please wait for them to be processed before creating any new ones.
+			`);
+		}
+
 		const request = await Request.create({
 			requester: msg.author.id,
 			request: requestContent
