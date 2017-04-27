@@ -62,7 +62,7 @@ module.exports = class RequestCommand extends Command {
 				footer: { text: `Request #${request.id}` }
 			}
 		});
-		await request.save({ requestMessage: requestMessage.id });
+		await request.update({ requestMessage: requestMessage.id });
 
 		return msg.reply('your request has been acknowledged. Please wait until it has been reviewed.');
 	}
