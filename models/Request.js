@@ -13,7 +13,7 @@ const Request = Database.db.define('requests', {
 	},
 	requestMessage: {
 		type: Sequelize.STRING,
-		allowNull: false
+		allowNull: true
 	},
 	processed: {
 		type: Sequelize.BOOLEAN,
