@@ -10,7 +10,6 @@ module.exports = class InvalidIssueCommand extends Command {
 			group: 'issue',
 			memberName: 'invalid',
 			description: 'Mark an issue as invalid.',
-			guildOnly: true,
 
 			args: [
 				{

@@ -9,7 +9,6 @@ module.exports = class ResetIssuesCommand extends Command {
 			group: 'issue',
 			memberName: 'reset-issues',
 			description: 'Reset the issues data table.',
-			guildOnly: true,
 
 			args: [
 				{

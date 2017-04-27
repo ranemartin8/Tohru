@@ -10,7 +10,6 @@ module.exports = class FixIssueCommand extends Command {
 			group: 'issue',
 			memberName: 'fix',
 			description: 'Fix an issue.',
-			guildOnly: true,
 
 			args: [
 				{

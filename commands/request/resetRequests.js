@@ -9,7 +9,6 @@ module.exports = class RequestCommand extends Command {
 			group: 'request',
 			memberName: 'reset-request',
 			description: 'Reset the requests data table.',
-			guildOnly: true,
 
 			args: [
 				{

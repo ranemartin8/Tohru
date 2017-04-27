@@ -11,7 +11,6 @@ module.exports = class RequestCommand extends Command {
 			group: 'request',
 			memberName: 'request',
 			description: 'Request a new feature for any of our projects!',
-			guildOnly: true,
 
 			args: [
 				{

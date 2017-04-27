@@ -11,7 +11,6 @@ module.exports = class IssueCommand extends Command {
 			group: 'issue',
 			memberName: 'issue',
 			description: 'Create a new issue for any of our projects!',
-			guildOnly: true,
 
 			args: [
 				{

@@ -10,7 +10,6 @@ module.exports = class RejectRequestCommand extends Command {
 			group: 'request',
 			memberName: 'reject',
 			description: 'Reject a requested feature.',
-			guildOnly: true,
 
 			args: [
 				{

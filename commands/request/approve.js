@@ -10,7 +10,6 @@ module.exports = class ApproveRequestCommand extends Command {
 			group: 'request',
 			memberName: 'approve',
 			description: 'Approve a requested feature.',
-			guildOnly: true,
 
 			args: [
 				{
