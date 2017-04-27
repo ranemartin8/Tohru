@@ -69,7 +69,8 @@ client.on('error', winston.error)
 client.registry
 	.registerDefaults()
 	.registerGroups([
-		['request', 'Requests']
+		['request', 'Requests'],
+		['issue', 'Issues']
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 

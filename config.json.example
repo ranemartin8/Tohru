@@ -6,5 +6,6 @@
 		"You can put multiple here"
 	],
 	"db": "<postgresql db url>",
-	"requestsChannel": "<requests channel id>"
+	"requestsChannel": "<requests channel id>",
+	"issuesChannel": "<issues channel id>"
 }
