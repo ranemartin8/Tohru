@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 
 const Request = require('../../models/Request');
-const { requestsChannel } = require('../../config');
+const { REQUEST_CHANNEL } = process.env;
 
 module.exports = class ApproveRequestCommand extends Command {
 	constructor(client) {
@@ -26,7 +26,7 @@ module.exports = class ApproveRequestCommand extends Command {
 	}
 
 	async run(msg, { requestID }) {
-		if (msg.channel.id !== requestsChannel) {
+		if (msg.channel.id !== REQUEST_CHANNEL) {
 			return msg.reply('this command can only be used in the requests channel.');
 		}
 

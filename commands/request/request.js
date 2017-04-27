@@ -2,7 +2,7 @@ const { oneLine } = require('common-tags');
 const { Command } = require('discord.js-commando');
 
 const Request = require('../../models/Request');
-const { requestsChannel: requestsChannelID } = require('../../config');
+const { REQUEST_CHANNEL } = process.env;
 
 module.exports = class RequestCommand extends Command {
 	constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class RequestCommand extends Command {
 	}
 
 	async run(msg, { requestContent }) {
-		const requestsChannel = this.client.channels.get(requestsChannelID);
+		const requestsChannel = this.client.channels.get(REQUEST_CHANNEL);
 		if (!requestsChannel || requestsChannel.type !== 'text') {
 			return msg.reply(oneLine`
 				the owner of this bot has not set a valid channel for requests,

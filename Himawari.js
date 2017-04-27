@@ -3,13 +3,13 @@ const { oneLine } = require('common-tags');
 const path = require('path');
 const winston = require('winston');
 
-const { commandPrefix, owner, token } = require('./config');
 const HimawariClient = require('./structures/HimawariClient');
 const SequelizeProvider = require('./providers/Sequelize');
+const { OWNERS, COMMAND_PREFIX, TOKEN } = process.env;
 
 const client = new HimawariClient({
-	owner: owner,
-	commandPrefix,
+	owner: OWNERS.split(','),
+	commandPrefix: COMMAND_PREFIX,
 	unknownCommandResponse: false,
 	disableEveryone: true
 });
@@ -32,7 +32,7 @@ client.on('error', winston.error)
 			[DISCORD]: ${msg.author.tag} (${msg.author.id})
 			> ${msg.guild ? `${msg.guild.name} (${msg.guild.id})` : 'DM'}
 			>> ${cmd.groupID}:${cmd.memberName}
-			${Object.values(args)[0] !== '' || !Object.values(args).length ? `>>> ${Object.values(args)}` : ''}
+			${Object.values(args).length ? `>>> ${Object.values(args)}` : ''}
 		`)
 	)
 	.on('unknownCommand', msg => {
@@ -82,6 +82,6 @@ client.registry
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.login(token);
+client.login(TOKEN);
 
 process.on('unhandledRejection', err => winston.error(`Uncaught Promise Error: \n${err.stack}`));

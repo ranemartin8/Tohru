@@ -2,10 +2,12 @@ const { promisifyAll } = require('tsubaki');
 const redisClient = require('redis');
 const winston = require('winston');
 
+const { REDIS } = process.env;
+
 promisifyAll(redisClient.RedisClient.prototype);
 promisifyAll(redisClient.Multi.prototype);
 
-const redis = redisClient.createClient({ db: 4 });
+const redis = redisClient.createClient({ host: REDIS, port: 6379 });
 
 class Redis {
 	static get db() {

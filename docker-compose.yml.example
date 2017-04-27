@@ -1,0 +1,23 @@
+version: '3'
+services:
+  himawari:
+    build: .
+    restart: always
+    container_name: himawari
+    environment:
+      - TOKEN=BOT_TOKEN
+      - COMMAND_PREFIX=-
+      - OWNERS=OWNER_IDS,CAN,BE,SEPERATED,BY,COMMAS
+      - DB=postgres://POSTGRES_USER_DEFINED_IN_POSTGRES_ENV:POSTGRES_PW_DEFINED_IN_POSTGRES_ENV@postgres:5432/POSTGRES_DB_EITHER_USER_DEFINED_IN_POSTGRES_ENV_OR_POSTGRES_DB_DEFINED_IN_POSTGRES
+      - REDIS=REDIS_HOSTNAME
+      - REQUEST_CHANNEL=REQUEST_CHANNEL_ID
+      - ISSUE_CHANNEL=ISSUE_CHANNEL_ID
+  postgres:
+    image: "postgres:9"
+    container_name: himawari_db
+    environment:
+      - POSTGRES_USER=himawari
+      - POSTGRES_PASSWORD=POSTGRES_PW
+  redis:
+    image: "redis:3"
+    container_name: himawari_redis

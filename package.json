@@ -46,7 +46,10 @@
     "eslint-config-aqua": "^1.2.0"
   },
   "eslintConfig": {
-    "extends": "aqua"
+    "extends": "aqua",
+    "rules": {
+      "no-process-env": "off"
+    }
   },
   "engines": {
     "node": ">=7.6.0"
