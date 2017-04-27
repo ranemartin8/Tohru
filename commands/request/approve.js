@@ -15,7 +15,7 @@ module.exports = class ApproveRequestCommand extends Command {
 			args: [
 				{
 					key: 'requestID',
-					prompt: 'which feature request do you wanna approve?\n',
+					prompt: 'which feature request do you want to approve?\n',
 					type: 'integer'
 				}
 			]
