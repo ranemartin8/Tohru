@@ -1,11 +1,20 @@
-language: node_js
-node_js:
-  - "7"
 dist: trusty
-cache: yarn
+sudo: required
+services:
+  - docker
 addons:
   apt:
     sources:
       - git-core
     packages:
       - git
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+language: node_js
+node_js:
+  - '7'
+cache: yarn
+install: yarn install
+script:
+  - bash ./deploy/deploy.sh
