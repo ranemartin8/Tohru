@@ -5,7 +5,7 @@ const Request = require('../../models/Request');
 module.exports = class RequestCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'reset-equest',
+			name: 'reset-request',
 			group: 'request',
 			memberName: 'reset-request',
 			description: 'Reset the requests data table.',
