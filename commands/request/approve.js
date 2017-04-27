@@ -46,7 +46,13 @@ module.exports = class ApproveRequestCommand extends Command {
 					name: 'Request approved',
 					icon_url: msg.author.displayAvatarURL // eslint-disable-line camelcase
 				},
-				description: 'Your request has been reviewed and approved!'
+				description: 'Your request has been reviewed and approved!',
+				fields: [
+					{
+						name: 'Your request:',
+						value: request.length <= 1024 ? request.issue : `${request.issue.substr(0, 1021)}...`
+					}
+				]
 			}
 		});
 

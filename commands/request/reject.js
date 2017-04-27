@@ -52,7 +52,13 @@ module.exports = class RejectRequestCommand extends Command {
 					name: 'Request rejected',
 					icon_url: msg.author.displayAvatarURL // eslint-disable-line camelcase
 				},
-				description: reason
+				description: reason,
+				fields: [
+					{
+						name: 'Your request:',
+						value: request.length <= 1024 ? request.issue : `${request.issue.substr(0, 1021)}...`
+					}
+				]
 			}
 		});
 

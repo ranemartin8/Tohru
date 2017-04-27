@@ -46,7 +46,13 @@ module.exports = class FixIssueCommand extends Command {
 					name: 'Issue fixed',
 					icon_url: msg.author.displayAvatarURL // eslint-disable-line camelcase
 				},
-				description: 'Your issue has been reviewed and fixed!'
+				description: 'Your issue has been reviewed and fixed!',
+				fields: [
+					{
+						name: 'Your issue:',
+						value: issue.issue.length <= 1024 ? issue.issue : `${issue.issue.substr(0, 1021)}...`
+					}
+				]
 			}
 		});
 

@@ -52,7 +52,13 @@ module.exports = class InvalidIssueCommand extends Command {
 					name: 'Issue invalidated',
 					icon_url: msg.author.displayAvatarURL // eslint-disable-line camelcase
 				},
-				description: reason
+				description: reason,
+				fields: [
+					{
+						name: 'Your issue:',
+						value: issue.issue.length <= 1024 ? issue.issue : `${issue.issue.substr(0, 1021)}...`
+					}
+				]
 			}
 		});
 
