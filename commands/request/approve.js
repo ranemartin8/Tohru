@@ -57,9 +57,10 @@ module.exports = class ApproveRequestCommand extends Command {
 
 		return msg.reply(`successfully approved request #${request.id}!`)
 			.then(async () => {
-				const messages = await msg.channel.fetchMessages({ after: request.requestMessage });
+				const messages = await msg.channel.fetchMessages({ after: msg.id });
 				const requestMessage = await msg.channel.fetchMessage(request.requestMessage);
 				messages.deleteAll();
+				msg.delete();
 				requestMessage.delete();
 			});
 	}

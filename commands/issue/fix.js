@@ -57,9 +57,10 @@ module.exports = class FixIssueCommand extends Command {
 
 		return msg.reply(`successfully fixed issue #${issue.id}!`)
 			.then(async () => {
-				const messages = await msg.channel.fetchMessages({ after: issue.issueMessage });
+				const messages = await msg.channel.fetchMessages({ after: msg.id });
 				const issueMessage = await msg.channel.fetchMessage(issue.issueMessage);
 				messages.deleteAll();
+				msg.delete();
 				issueMessage.delete();
 			});
 	}
