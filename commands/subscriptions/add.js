@@ -25,7 +25,9 @@ module.exports = class AddSubscriptionCommand extends Command {
 		return this.client.isOwner(msg.author);
 	}
 
-	async run(msg, { topic }) {
+	async run(msg, args) {
+		const topic = args.topic.toLowercase();
+
 		if (!msg.guild.member(this.client.user).hasPermission('MANAGE_ROLES')) {
 			return msg.reply('I am missing `Manage Roles` permissions to create roles.');
 		}

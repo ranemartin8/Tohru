@@ -30,7 +30,10 @@ module.exports = class PublishCommand extends Command {
 		return this.client.isOwner(msg.author);
 	}
 
-	async run(msg, { topic, message }) {
+	async run(msg, args) {
+		const topic = args.topic.toLowercase();
+		const message = args.message;
+
 		const announcementsChannel = msg.guild.channels.get(ANNOUNCEMENT_CHANNEL);
 
 		if (!announcementsChannel || announcementsChannel.type !== 'text') {
@@ -42,7 +45,7 @@ module.exports = class PublishCommand extends Command {
 		}
 
 		const subscription = await Subscription.findByPrimary(topic);
-		const role = msg.guild.roles.get(subscription.role);
+		const role = msg.guild.roles.find(subscription.role);
 		await role.setMentionable(true);
 		await announcementsChannel.send(`${role}, ${message}`);
 		await role.setMentionable(false);

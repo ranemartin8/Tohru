@@ -21,7 +21,9 @@ module.exports = class UnsubscribeCommand extends Command {
 		});
 	}
 
-	async run(msg, { topic }) {
+	async run(msg, args) {
+		const topic = args.topic.toLowercase();
+
 		if (!msg.guild.member(this.client.user).hasPermission('MANAGE_ROLES')) {
 			return msg.reply('I am missing `Manage Roles` permissions to assign roles.');
 		}
