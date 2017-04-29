@@ -1,9 +1,9 @@
 version: '3'
 services:
-  himawari:
-    image: "crawl/himawari:latest"
+  tohru:
+    image: "crawl/tohru:latest"
     restart: always
-    container_name: himawari
+    container_name: tohru
     environment:
       - TOKEN=BOT_TOKEN
       - COMMAND_PREFIX=-
@@ -14,10 +14,10 @@ services:
       - ISSUE_CHANNEL=ISSUE_CHANNEL_ID
   postgres:
     image: "postgres:9"
-    container_name: himawari_db
+    container_name: tohru_db
     environment:
-      - POSTGRES_USER=himawari
+      - POSTGRES_USER=tohru
       - POSTGRES_PASSWORD=POSTGRES_PW
   redis:
     image: "redis:3"
-    container_name: himawari_redis
+    container_name: tohru_redis

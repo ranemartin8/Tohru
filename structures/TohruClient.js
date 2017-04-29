@@ -3,7 +3,7 @@ const { CommandoClient } = require('discord.js-commando');
 const Database = require('./PostgreSQL');
 const Redis = require('./Redis');
 
-class HimawariClient extends CommandoClient {
+class TohruClient extends CommandoClient {
 	constructor(options) {
 		super(options);
 		this.database = Database.db;
@@ -14,4 +14,4 @@ class HimawariClient extends CommandoClient {
 	}
 }
 
-module.exports = HimawariClient;
+module.exports = TohruClient;

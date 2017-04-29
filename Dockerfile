@@ -8,8 +8,8 @@ RUN apt update
 RUN apt install -y build-essential ffmpeg git python nodejs
 RUN apt autoremove -y
 
-RUN mkdir -p /usr/src/Himawari
-WORKDIR /usr/src/Himawari
+RUN mkdir -p /usr/src/Tohru
+WORKDIR /usr/src/Tohru
 
 COPY . .
 
@@ -23,4 +23,4 @@ ENV TOKEN= \
 	REQUEST_CHANNEL= \
 	ISSUE_CHANNEL=
 
-CMD node Himawari.js
+CMD node Tohru.js

@@ -3,11 +3,11 @@ const { oneLine } = require('common-tags');
 const path = require('path');
 const winston = require('winston');
 
-const HimawariClient = require('./structures/HimawariClient');
+const TohruClient = require('./structures/TohruClient');
 const SequelizeProvider = require('./providers/Sequelize');
 const { OWNERS, COMMAND_PREFIX, TOKEN } = process.env;
 
-const client = new HimawariClient({
+const client = new TohruClient({
 	owner: OWNERS.split(','),
 	commandPrefix: COMMAND_PREFIX,
 	unknownCommandResponse: false,

@@ -1,8 +1,8 @@
 {
-  "name": "himawari",
+  "name": "tohru",
   "version": "0.1.0",
   "description": "The official WeebDev server bot.",
-  "main": "Himawari.js",
+  "main": "tohru.js",
   "author": {
     "name": "iCrawl",
     "email": "icrawltogo@gmail.com"
@@ -19,17 +19,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WeebDev/Himawari.git"
+    "url": "git+https://github.com/WeebDev/Tohru.git"
   },
   "bugs": {
-    "url": "https://github.com/WeebDev/Himawari/issues"
+    "url": "https://github.com/WeebDev/Tohru/issues"
   },
   "keywords": [
     "discord",
     "bot",
     "weebdev"
   ],
-  "homepage": "https://github.com/WeebDev/Himawari#readme",
+  "homepage": "https://github.com/WeebDev/Tohru#readme",
   "dependencies": {
     "bufferutil": "^3.0.0",
     "discord.js": "hydrabolt/discord.js",
