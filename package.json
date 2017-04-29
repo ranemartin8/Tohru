@@ -32,7 +32,7 @@
   "homepage": "https://github.com/WeebDev/Himawari#readme",
   "dependencies": {
     "bufferutil": "^3.0.0",
-    "discord.js": "hydrabolt/discord.js#8436cbe8b164a58a1655a38198a2de0e14ed9f5e",
+    "discord.js": "hydrabolt/discord.js",
     "discord.js-commando": "gawdl3y/discord.js-commando",
     "erlpack": "hammerandchisel/erlpack",
     "pg": "^6.1.5",

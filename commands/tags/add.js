@@ -21,13 +21,11 @@ module.exports = class TagAddCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					label: 'tagname',
 					prompt: 'what would you like to name it?\n',
 					type: 'string'
 				},
 				{
 					key: 'content',
-					label: 'tagcontent',
 					prompt: 'what content would you like to add?\n',
 					type: 'string',
 					max: 1800
@@ -36,9 +34,9 @@ module.exports = class TagAddCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const name = Util.cleanContent(args.name.toLowerCase(), msg);
-		const content = Util.cleanContent(args.content, msg);
+	async run(msg, { name, content }) {
+		const tagName = Util.cleanContent(msg, name.toLowerCase());
+		const tagContent = Util.cleanContent(msg, content);
 		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
 		if (tag) return msg.say(`A tag with the name **${name}** already exists, ${msg.author}`);
 
@@ -49,8 +47,8 @@ module.exports = class TagAddCommand extends Command {
 			guildName: msg.guild.name,
 			channelID: msg.channel.id,
 			channelName: msg.channel.name,
-			name: name,
-			content: content
+			name: tagName,
+			content: tagContent
 		});
 
 		return msg.say(`A tag with the name **${name}** has been added, ${msg.author}`);

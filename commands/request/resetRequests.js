@@ -34,7 +34,6 @@ module.exports = class RequestCommand extends Command {
 
 	run(msg) {
 		Request.sync({ force: true });
-
 		return msg.reply('the request data table has been reset.');
 	}
 };

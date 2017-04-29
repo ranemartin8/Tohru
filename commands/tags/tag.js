@@ -18,7 +18,6 @@ module.exports = class TagCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					label: 'tagname',
 					prompt: 'what tag would you like to see?\n',
 					type: 'string',
 					parse: str => str.toLowerCase()
@@ -27,8 +26,7 @@ module.exports = class TagCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { name } = args;
+	async run(msg, { name }) {
 		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
 		if (!tag) return null;
 		tag.increment('uses');

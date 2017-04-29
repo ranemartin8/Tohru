@@ -19,7 +19,6 @@ module.exports = class TagSourceCommand extends Command {
 			args: [
 				{
 					key: 'name',
-					label: 'tagname',
 					prompt: 'what tag source would you like to see?\n',
 					type: 'string',
 					parse: str => str.toLowerCase()
@@ -28,8 +27,7 @@ module.exports = class TagSourceCommand extends Command {
 		});
 	}
 
-	async run(msg, args) {
-		const { name } = args;
+	async run(msg, { name }) {
 		const tag = await Tag.findOne({ where: { name, guildID: msg.guild.id } });
 		if (!tag) return msg.say(`A tag with the name **${name}** doesn't exist, ${msg.author}`);
 

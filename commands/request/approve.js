@@ -26,9 +26,7 @@ module.exports = class ApproveRequestCommand extends Command {
 	}
 
 	async run(msg, { requestID }) {
-		if (msg.channel.id !== REQUEST_CHANNEL) {
-			return msg.reply('this command can only be used in the requests channel.');
-		}
+		if (msg.channel.id !== REQUEST_CHANNEL) return msg.reply('this command can only be used in the requests channel.');
 
 		const request = await Request.findById(requestID);
 		if (!request) return msg.reply('you provided an invalid request id.');

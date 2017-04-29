@@ -26,9 +26,7 @@ module.exports = class FixIssueCommand extends Command {
 	}
 
 	async run(msg, { issueID }) {
-		if (msg.channel.id !== ISSUE_CHANNEL) {
-			return msg.reply('this command can only be used in the issues channel.');
-		}
+		if (msg.channel.id !== ISSUE_CHANNEL) return msg.reply('this command can only be used in the issues channel.');
 
 		const issue = await Issue.findById(issueID);
 		if (!issue) return msg.reply('you provided an invalid issue id.');
