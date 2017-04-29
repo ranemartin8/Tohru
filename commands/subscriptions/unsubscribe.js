@@ -14,22 +14,20 @@ module.exports = class UnsubscribeCommand extends Command {
 			args: [
 				{
 					key: 'topic',
-					prompt: 'What topic would you like to unsubscribe from?\n',
-					type: 'string'
+					prompt: 'what topic would you like to unsubscribe from?\n',
+					type: 'string',
+					parse: str => str.toLowerCase()
 				}
 			]
 		});
 	}
 
-	async run(msg, args) {
-		const topic = args.topic.toLowercase();
-
+	async run(msg, { topic }) {
 		if (!msg.guild.member(this.client.user).hasPermission('MANAGE_ROLES')) {
 			return msg.reply('I am missing `Manage Roles` permissions to assign roles.');
 		}
 
 		const subscription = await Subscription.findByPrimary(topic);
-
 		if (!subscription) return msg.reply('no such subscription is available.');
 		if (!subscription.users.includes(msg.author.id)) return msg.reply('you are not subscribed to this topic.');
 

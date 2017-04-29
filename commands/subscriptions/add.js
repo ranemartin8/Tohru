@@ -14,8 +14,9 @@ module.exports = class AddSubscriptionCommand extends Command {
 			args: [
 				{
 					key: 'topic',
-					prompt: 'What topic would you like to add?\n',
-					type: 'string'
+					prompt: 'what topic would you like to add?\n',
+					type: 'string',
+					parse: str => str.toLowerCase()
 				}
 			]
 		});
@@ -25,19 +26,15 @@ module.exports = class AddSubscriptionCommand extends Command {
 		return this.client.isOwner(msg.author);
 	}
 
-	async run(msg, args) {
-		const topic = args.topic.toLowercase();
-
+	async run(msg, { topic }) {
 		if (!msg.guild.member(this.client.user).hasPermission('MANAGE_ROLES')) {
 			return msg.reply('I am missing `Manage Roles` permissions to create roles.');
 		}
 
 		const subscription = await Subscription.findByPrimary(topic);
-
 		if (subscription) return msg.reply('that topic is already available. Please choose a different name.');
 
 		const role = await msg.guild.createRole({ name: topic });
-
 		await Subscription.create({
 			topic,
 			role: role.id,

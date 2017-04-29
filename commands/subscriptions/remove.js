@@ -14,8 +14,9 @@ module.exports = class RemoveSubscriptionCommand extends Command {
 			args: [
 				{
 					key: 'topic',
-					prompt: 'What topic would you like to remove?\n',
-					type: 'string'
+					prompt: 'what topic would you like to remove?\n',
+					type: 'string',
+					parse: str => str.toLowerCase()
 				}
 			]
 		});
@@ -25,15 +26,12 @@ module.exports = class RemoveSubscriptionCommand extends Command {
 		return this.client.isOwner(msg.author);
 	}
 
-	async run(msg, args) {
-		const topic = args.topic.toLowercase();
-
+	async run(msg, { topic }) {
 		if (!msg.guild.member(this.client.user).hasPermission('MANAGE_ROLES')) {
 			return msg.reply('I am missing `Manage Roles` permissions to delete roles.');
 		}
 
 		const subscription = await Subscription.findByPrimary(topic);
-
 		if (!subscription) return msg.reply('that topic does not exist.');
 
 		const role = msg.guild.roles.get(subscription.role);
