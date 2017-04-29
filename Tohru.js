@@ -78,7 +78,8 @@ client.registry
 	.registerGroups([
 		['request', 'Requests'],
 		['issue', 'Issues'],
-		['tags', 'Tags']
+		['tags', 'Tags'],
+		['subscriptions', 'Subscriptions']
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 

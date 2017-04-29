@@ -12,6 +12,7 @@ services:
       - REDIS=REDIS_HOSTNAME
       - REQUEST_CHANNEL=REQUEST_CHANNEL_ID
       - ISSUE_CHANNEL=ISSUE_CHANNEL_ID
+      - ANNOUNCEMENT_CHANNEL=ANNOUNCEMENT_CHANNEL_ID
   postgres:
     image: "postgres:9"
     container_name: tohru_db
