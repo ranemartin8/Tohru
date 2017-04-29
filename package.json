@@ -2,7 +2,7 @@
   "name": "tohru",
   "version": "0.1.0",
   "description": "The official WeebDev server bot.",
-  "main": "tohru.js",
+  "main": "Tohru.js",
   "author": {
     "name": "iCrawl",
     "email": "icrawltogo@gmail.com"
