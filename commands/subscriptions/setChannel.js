@@ -19,7 +19,7 @@ module.exports = class SetChannelCommand extends Command {
 	}
 
 	hasPermission(msg) {
-		return msg.member.hasPermissions('MANAGE_SERVER');
+		return msg.member.hasPermission('MANAGE_GUILD');
 	}
 
 	async run(msg, { channel }) { // eslint-disable-line require-await

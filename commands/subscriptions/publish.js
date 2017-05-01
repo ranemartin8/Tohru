@@ -27,7 +27,7 @@ module.exports = class PublishCommand extends Command {
 	}
 
 	hasPermission(msg) {
-		return this.client.isOwner(msg.author);
+		return msg.member.hasPermission('MANAGE_GUILD');
 	}
 
 	async run(msg, { topic, message }) {

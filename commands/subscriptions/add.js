@@ -23,7 +23,7 @@ module.exports = class AddSubscriptionCommand extends Command {
 	}
 
 	hasPermission(msg) {
-		return this.client.isOwner(msg.author);
+		return msg.member.hasPermission('MANAGE_GUILD');
 	}
 
 	async run(msg, { topic }) {
