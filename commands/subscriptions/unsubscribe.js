@@ -27,7 +27,12 @@ module.exports = class UnsubscribeCommand extends Command {
 			return msg.reply('I am missing `Manage Roles` permissions to assign roles.');
 		}
 
-		const subscription = await Subscription.findByPrimary(topic);
+		const subscription = await Subscription.findOne({
+			where: {
+				guild: msg.guild.id,
+				topic
+			}
+		});
 		if (!subscription) return msg.reply('no such subscription is available.');
 		if (!subscription.users.includes(msg.author.id)) return msg.reply('you are not subscribed to this topic.');
 

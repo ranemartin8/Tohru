@@ -24,7 +24,10 @@ module.exports = class ListSubscriptionsCommand extends Command {
 	}
 
 	async run(msg) {
-		const subscriptions = await Subscription.findAll({ attributes: ['topic'] });
+		const subscriptions = await Subscription.findAll({
+			where: { guild: msg.guild.id },
+			attributes: ['topic']
+		});
 
 		if (!subscriptions.length) return msg.reply('there are no subscriptions available at this time.');
 		return msg.reply(`the following subscriptions are available:\n${subscriptions.map(sub => sub.name)}`);

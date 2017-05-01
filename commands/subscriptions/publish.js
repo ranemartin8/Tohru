@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 
-const { ANNOUNCEMENT_CHANNEL } = process.env;
 const Subscription = require('../../models/Subscription');
 
 module.exports = class PublishCommand extends Command {
@@ -32,15 +31,20 @@ module.exports = class PublishCommand extends Command {
 	}
 
 	async run(msg, { topic, message }) {
-		const announcementsChannel = msg.guild.channels.get(ANNOUNCEMENT_CHANNEL);
+		const announcementsChannel = msg.guild.channels.get(msg.guild.settings.get('announcementsChannel'));
 		if (!announcementsChannel || announcementsChannel.type !== 'text') {
 			return msg.reply('you have no set a valid announcements channel.');
 		}
-		if (!announcementsChannel.permissionsFor(msg.guild.member(this.client.user)).hasPermission('SEND_MESSAGES')) {
+		if (!announcementsChannel.permissionsFor(msg.guild.member(this.client.user)).has('SEND_MESSAGES')) {
 			return msg.reply(`I am missing \`Send Message\` permissions for ${announcementsChannel}`);
 		}
 
-		const subscription = await Subscription.findByPrimary(topic);
+		const subscription = await Subscription.findOne({
+			where: {
+				guild: msg.guild.id,
+				topic
+			}
+		});
 		const role = msg.guild.roles.get(subscription.role);
 		await role.setMentionable(true);
 		await announcementsChannel.send(`${role}, ${message}`);

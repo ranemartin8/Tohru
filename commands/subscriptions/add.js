@@ -31,11 +31,17 @@ module.exports = class AddSubscriptionCommand extends Command {
 			return msg.reply('I am missing `Manage Roles` permissions to create roles.');
 		}
 
-		const subscription = await Subscription.findByPrimary(topic);
+		const subscription = await Subscription.findOne({
+			where: {
+				guild: msg.guild.id,
+				topic
+			}
+		});
 		if (subscription) return msg.reply('that topic is already available. Please choose a different name.');
 
 		const role = await msg.guild.createRole({ name: topic });
 		await Subscription.create({
+			guild: msg.guild.id,
 			topic,
 			role: role.id,
 			mentionable: false

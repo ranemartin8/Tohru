@@ -3,11 +3,13 @@ const Sequelize = require('sequelize');
 const Database = require('../structures/PostgreSQL');
 
 const Subscription = Database.db.define('subscriptions', {
+	guild: {
+		type: Sequelize.STRING,
+		allowNull: false
+	},
 	topic: {
 		type: Sequelize.STRING,
-		allowNull: false,
-		primaryKey: true,
-		unique: true
+		allowNull: false
 	},
 	users: {
 		type: Sequelize.ARRAY(Sequelize.STRING), // eslint-disable-line new-cap

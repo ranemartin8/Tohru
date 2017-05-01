@@ -31,7 +31,12 @@ module.exports = class RemoveSubscriptionCommand extends Command {
 			return msg.reply('I am missing `Manage Roles` permissions to delete roles.');
 		}
 
-		const subscription = await Subscription.findByPrimary(topic);
+		const subscription = await Subscription.findOne({
+			where: {
+				guild: msg.guild.id,
+				topic
+			}
+		});
 		if (!subscription) return msg.reply('that topic does not exist.');
 
 		const role = msg.guild.roles.get(subscription.role);
