@@ -18,6 +18,7 @@ services:
     environment:
       - POSTGRES_USER=tohru
       - POSTGRES_PASSWORD=POSTGRES_PW
+      - PGDATA=PATH_TO_DIRECTORY_THAT_SAVES_DATA_ON_THE_SYSTEM
   redis:
     image: "redis:3"
     container_name: tohru_redis
