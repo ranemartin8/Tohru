@@ -6,7 +6,7 @@ module.exports = class RemoveSubscriptionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'remove-sub',
-			aliases: ['rem-sub', 'sub-remove', 'sub-rem'],
+			aliases: ['rem-sub', 'sub-remove', 'sub-rem', 'remove-subscription', 'subscription-remove'],
 			group: 'subscriptions',
 			memberName: 'remove',
 			description: 'Remove a subscription topic for people to subscribe to.',

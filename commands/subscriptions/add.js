@@ -6,7 +6,7 @@ module.exports = class AddSubscriptionCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'add-sub',
-			aliases: ['sub-add'],
+			aliases: ['sub-add', 'add-subscription', 'subscription-add'],
 			group: 'subscriptions',
 			memberName: 'add',
 			description: 'Add a subscription topic for people to subscribe to.',
