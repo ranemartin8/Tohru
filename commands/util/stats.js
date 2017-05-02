@@ -1,7 +1,7 @@
+const { stripIndents } = require('common-tags');
 const { Command } = require('discord.js-commando');
 const moment = require('moment');
 require('moment-duration-format');
-const { stripIndents } = require('common-tags');
 
 const { version } = require('../../package');
 
@@ -24,7 +24,7 @@ module.exports = class StatsCommand extends Command {
 	run(msg) {
 		return msg.embed({
 			color: 3447003,
-			description: '**Commando Statistics**',
+			description: `**${this.client.user.username} Statistics**`,
 			fields: [
 				{
 					name: '❯ Uptime',
