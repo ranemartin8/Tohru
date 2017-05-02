@@ -79,7 +79,8 @@ client.registry
 		['request', 'Requests'],
 		['issue', 'Issues'],
 		['tags', 'Tags'],
-		['subscriptions', 'Subscriptions']
+		['subscriptions', 'Subscriptions'],
+		['util', 'Utility']
 	])
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
