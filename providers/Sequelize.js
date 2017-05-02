@@ -25,7 +25,7 @@ class SequelizeProvider extends SettingProvider {
 
 		/**
 		 * Client that the provider is for (set once the client is ready, after using {@link CommandoClient#setProvider})
-		 * @name SQLProvider#client
+		 * @name SequelizeProvider#client
 		 * @type {CommandoClient}
 		 * @readonly
 		 */
